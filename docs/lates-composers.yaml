@@ -1,0 +1,67 @@
+openapi: "3.0.0"
+info:
+  title: Composer API
+  version: "1.0"
+paths:
+  /composers:
+    description: THe composers catalog
+    get:
+      summary: Search for composers
+      tags:
+        - composers
+      description: |
+        Search for composers in catalog
+        using free query parameter
+      responses:
+        "200":
+          description: |
+            Composers matching free query parameter
+        "500":
+          description: |
+            Server Exception
+        "501":
+          description: |
+            MongoDB Exception
+    post:
+      summary: Add composer
+      tags:
+        - composers
+      description: |
+        Add composers
+      responses:
+        "200":
+          description: |
+            Composers added
+        "500":
+          description: |
+            Server Exception
+        "501":
+          description: |
+            MongoDB Exception
+  /composers/{id}:
+    description: The composers by id
+    get:
+      summary: Search composers using id parameter
+      tags:
+        - consumers
+      description: |
+        Search for composers in catalog
+        using id as parameter
+      parameters:
+        name: id
+        description: |
+          composers id
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: |
+            Composers matching free query parameter
+        "500":
+          description: |
+            Server Exception
+        "501":
+          description: |
+            MongoDB Exception
