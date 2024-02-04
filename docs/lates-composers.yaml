@@ -51,7 +51,7 @@ paths:
         name: id
         description: |
           composers id
-        in: query
+        in: path
         required: true
         schema:
           type: string

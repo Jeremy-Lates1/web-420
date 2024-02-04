@@ -4,6 +4,7 @@
 ; Author: Jeremy Lates
 ; Date:  01-11-2023
 ; Comments: Source is adapted from Professor Krasso assignment handouts
+; Code adapted from https://github.com/buwebdev/web-420/blob/master/app.js
 ;===========================================
 */
 
@@ -41,6 +42,39 @@ const options = {
 const openapiSpecification = swaggerJSDoc(options);
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(openapiSpecification));
+
+app.set("port", process.env.PORT || 3000);
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+/**
+ * MongoDB Atlas connection string
+ */
+
+const conn =
+  "mongodb+srv://web420_user:s3cret@bellevueuniversity.gxluysn.mongodb.net/web420DB?retryWrites=true&w=majority";
+mongoose
+  .connect(conn, {
+    promiseLibrary: require("bluebird"),
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+  })
+  .then(() => {
+    console.log(`Connection to web420DB on MongoDB Atlas successful`);
+  })
+  .catch((err) => {
+    console.log(`MongoDB Error: ${err.message}`);
+  });
+
+/*
+    Here we go. APi time
+*/
+
+//API routing starts here
+const composerAPI = require("./routes/lates-composer-routes");
+
+app.use("/api", composerAPI);
 
 //Start the server and liston on port 3000
 const server = http.createServer(app);
