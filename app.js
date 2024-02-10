@@ -71,10 +71,13 @@ mongoose
     Here we go. APi time
 */
 
-//API routing starts here
+//Composer API routing starts here
 const composerAPI = require("./routes/lates-composer-routes");
-
 app.use("/api", composerAPI);
+
+//Persons API routing starts here
+const personAPI = require("./routes/lates-person-routes");
+app.use("/api", personAPI);
 
 //Start the server and liston on port 3000
 const server = http.createServer(app);
