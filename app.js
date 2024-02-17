@@ -79,6 +79,10 @@ app.use("/api", composerAPI);
 const personAPI = require("./routes/lates-person-routes");
 app.use("/api", personAPI);
 
+//User API routing starts here
+const userAPI = require("./routes/lates-session-routes");
+app.use("/api", userAPI);
+
 //Start the server and liston on port 3000
 const server = http.createServer(app);
 server.listen(PORT, (error) => {
