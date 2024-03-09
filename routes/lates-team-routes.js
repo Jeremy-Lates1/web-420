@@ -80,7 +80,7 @@ router.get("/teams", async (req, res) => {
 router.get("/teams/:id/players", (req, res) => {
   console.log(req.params.id);
   try {
-    Team.findOne({ id: req.params.id }, function (err, team) {
+    Team.findOne({ teamId: req.params.id }, function (err, team) {
       if (err) {
         console.log(err);
         res.status(501).send({
