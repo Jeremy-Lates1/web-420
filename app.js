@@ -87,6 +87,10 @@ app.use("/api", userAPI);
 const customerAPI = require("./routes/lates-node-shopper-routes");
 app.use("/api", customerAPI);
 
+//Team API routing starts here
+const teamAPI = require("./routes/lates-team-routes");
+app.use("/api", teamAPI);
+
 //Start the server and liston on port 3000
 const server = http.createServer(app);
 server.listen(PORT, (error) => {

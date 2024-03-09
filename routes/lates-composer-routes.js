@@ -56,7 +56,7 @@ router.get("/composers", async (req, res) => {
 /**
  * findComposerById
  * @openapi
- * /api/composer/{id}:
+ * /api/composers/{id}:
  *   get:
  *     tags:
  *       - Composers
@@ -100,7 +100,7 @@ router.get("/composers/:id", async (req, res) => {
 /**
  * createComposer
  * @openapi
- * /api/composer:
+ * /api/composers:
  *   post:
  *     tags:
  *       - Composers
@@ -235,9 +235,9 @@ router.put("/composers/:id", async (req, res) => {
 });
 
 /**
- * deleteComposerbyId
+ * deleteComposerById
  * @openapi
- * /api/compsers/{id}:
+ * /api/composers/{id}:
  *   delete:
  *     tags:
  *       - Composers
